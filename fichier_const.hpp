@@ -11,7 +11,7 @@ using namespace std;
   double const t_ = 20.00;      //tau
   double const V_thr = 20;  
   double const V_reset= 10; // reset potential
-  double const trefact=2.00;
+  double const trefact=20.0;
   double const c1 = exp(-h/t_);
   double const R=20.00;
   double const c2 = R*(1-exp(-h/t_));

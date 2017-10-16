@@ -17,6 +17,7 @@ class Neuron {
 	 //double T=n*h;
 	 bool n_refractory = false;
 	 double local_t;
+	 
 	  
 	 // est ce que le courant externe ini dans le main ou bien dans classe?//
 	 
@@ -25,6 +26,9 @@ class Neuron {
 	void update(double I); // à completer
 	double getmembrane();
 	int getnumspike();
+	bool hasjustspike(double steps);
+	void sendspike( Neuron& b);
+	int spikereceived = 0;
 };
 	
 	

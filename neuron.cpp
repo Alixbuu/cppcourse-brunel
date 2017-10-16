@@ -36,12 +36,36 @@ void Neuron::update(double I )
 		membrane_pot=V_reset;
 	} else {
 		double Vtemp;
-		Vtemp=c1*membrane_pot + I*c2;
+		Vtemp=c1*membrane_pot + I*c2 + spikereceived*5;
 		membrane_pot=Vtemp;
+		spikereceived=0;
 	 }
 	++local_t;
 }
-		 
+	
+bool Neuron::hasjustspike(double steps)
+{
+	if(timespike.empty()) {
+		return false;
+	}
+	
+	if(timespike.back()== (steps-1)) {
+		return true;
+		
+	}
+	return false;
+}	 
+
+void Neuron::sendspike(Neuron& b)
+{
+	if(hasjustspike(local_t)) { // local t ou global t?
+	  
+	   b.spikereceived +=1;
+	   
+  }
+}
+	
+		
 			
 			
 			
