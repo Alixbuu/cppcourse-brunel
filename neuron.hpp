@@ -17,6 +17,7 @@ class Neuron {
 	 //double T=n*h;
 	 bool n_refractory = false;
 	 double local_t;
+	 vector<double> buffer; // vector avec les incoming spike
 	 
 	  
 	 // est ce que le courant externe ini dans le main ou bien dans classe?//
@@ -29,6 +30,7 @@ class Neuron {
 	bool hasjustspike(double steps);
 	void sendspike( Neuron& b);
 	int spikereceived = 0;
+	void addinbuffer();
 };
 	
 	

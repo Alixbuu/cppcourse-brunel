@@ -6,7 +6,9 @@ using namespace std;
 
 Neuron::Neuron (double membranepot,int numspike,double local)
 :membrane_pot(membranepot),numberspike(numspike),local_t(local)
-{}
+{
+	buffer.resize(delay +1);
+}
 
 
 
@@ -64,6 +66,11 @@ void Neuron::sendspike(Neuron& b)
 	   
   }
 }
+
+void addinbuffer()
+{
+	if(spikereceived!=0.0) {
+		
 	
 		
 			
