@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/INTRANET/buuhoang/myfiles/cpp/2017-2018/projetprog/github/projet_neuro/partie2/partie2buffer/fichier_const.hpp
+iostream
+-
+cmath
+-
+
+/home/INTRANET/buuhoang/myfiles/cpp/2017-2018/projetprog/github/projet_neuro/partie2/partie2buffer/mainneuron.cpp
+iostream
+-
+neuron.hpp
+/home/INTRANET/buuhoang/myfiles/cpp/2017-2018/projetprog/github/projet_neuro/partie2/partie2buffer/neuron.hpp
+fstream
+-
+vector
+-
+
+/home/INTRANET/buuhoang/myfiles/cpp/2017-2018/projetprog/github/projet_neuro/partie2/partie2buffer/neuron.cpp
+iostream
+-
+neuron.hpp
+/home/INTRANET/buuhoang/myfiles/cpp/2017-2018/projetprog/github/projet_neuro/partie2/partie2buffer/neuron.hpp
+cmath
+-
+vector
+-
+
+/home/INTRANET/buuhoang/myfiles/cpp/2017-2018/projetprog/github/projet_neuro/partie2/partie2buffer/neuron.hpp
+iostream
+-
+fichier_const.hpp
+/home/INTRANET/buuhoang/myfiles/cpp/2017-2018/projetprog/github/projet_neuro/partie2/partie2buffer/fichier_const.hpp
+cmath
+-
+vector
+-
+
