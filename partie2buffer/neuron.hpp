@@ -23,10 +23,11 @@ class Neuron {
 	 // est ce que le courant externe ini dans le main ou bien dans classe?//
 	 
 	public : 
-	Neuron(double membranepotential=10.0, int numspike= 0,double local=0.0);
+	Neuron(double membranepotential=0.0, int numspike= 0,double local=0.0);
 	void update(double I); // à completer
 	double getmembrane();
 	int getnumspike();
+	void setmembrane( double V);
 	bool hasjustspike(double steps);
 	void sendspike( Neuron& b);
 	int spikereceived = 0;

@@ -17,6 +17,12 @@ double Neuron::getmembrane()
 	return membrane_pot;
 }
 
+void Neuron::setmembrane( double V)
+ { 
+	 membrane_pot=V;
+ }
+	 
+
 int Neuron::getnumspike()
 { 
 	return numberspike;
@@ -30,7 +36,7 @@ void Neuron::update(double I )
 		++numberspike;	
 	}
 	
-	if (!timespike.empty() and local_t - trefact > timespike.back()) {
+	if (!timespike.empty() and (local_t - trefact) > (timespike.back()-1)) {
 		n_refractory=false;
 	}
 	
@@ -38,7 +44,7 @@ void Neuron::update(double I )
 		membrane_pot=V_reset;
 	} else {
 		double Vtemp;
-		Vtemp=c1*membrane_pot + I*c2 + buffer[(local_t)%(buffer.size())]*V_thr;
+		Vtemp=c1*membrane_pot + I*c2 + buffer[(local_t)%(buffer.size())]*J;
 		membrane_pot=Vtemp;
 		buffer[local_t%buffer.size()]=0;
 	 }

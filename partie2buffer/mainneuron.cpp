@@ -6,13 +6,14 @@ using namespace std;
 
  int main()
 { 
- double t_start=20;
- double t_stop =990;
+ double t_start=0;
+ double t_stop =5000;
  double I_ext;//courant externe
  double I_input;
  double I_hi=0.0;
+ double Itest=1.0;
  int    t_glo=0;
- double t_stopsimu =1000;
+ double t_stopsimu =5000;
  cout << "entrer la valeur du courant: ";
  cin >>I_input;
  I_ext=I_input;
@@ -37,16 +38,16 @@ using namespace std;
 		   }else {
 			 neurone[i].update(I_hi);
 		   }
-		   Membpotfile<<" le potentiel est " << neurone[i].getmembrane()<<" au temps "<< (t_glo+1)*h<<'\t';
+		Membpotfile<<" le potentiel est " << neurone[i].getmembrane()<<" au temps "<< (t_glo+1)*h<<'\t';
 	     }
-		Membpotfile << endl;
+		Membpotfile << '\n';
 		
 		} else {                                 // pas de courant si pas entre start and stop
 		   for(size_t i(0); i< neurone.size(); ++ i)
 		   { neurone[i].update(I_hi);
 			Membpotfile<<" le potentiel est " << neurone[i].getmembrane()<<" au temps "<< (t_glo+1)*h<<'\t';
 		   }
-		  Membpotfile << endl;
+		Membpotfile <<'\n';
 		  }
 		  
  neurone[0].sendspike(neurone[1]); // fais un tableau de deux neurones
