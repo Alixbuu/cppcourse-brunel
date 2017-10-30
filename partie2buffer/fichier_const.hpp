@@ -16,7 +16,7 @@ using namespace std;
   double const R=20.00;
   double const c2 = R*(1-exp(-h/t_));
   int const delay= 15;
-  double const J=0.1;
+  double const J=0.1; //input
   
   
   
