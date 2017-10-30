@@ -1,1 +1,0 @@
-/home/INTRANET/buuhoang/myfiles/cpp/2017-2018/projetprog/github/projet_neuro/partie2/partie2buffer/build/CMakeFiles/Neuron.dir
