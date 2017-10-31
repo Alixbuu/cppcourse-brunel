@@ -16,15 +16,21 @@ class Neuron {
 	 int numberspike;
 	 //double T=n*h;
 	 bool n_refractory = false;
-	 double local_t;
+	 int local_t;
+	 vector<int> buffer; // vector avec les incoming spike
+	 
 	  
-	 // est ce que le courant externe ini dans le main ou bien dans classe?//
+	 
 	 
 	public : 
-	Neuron(double membranepotential=10.0, int numspike= 0,double local=0.0);
-	void update(double I); // à completer
+	Neuron(double membranepotential=0.0, int numspike= 0,double local=0.0);
+	bool update(double I);
+	bool updatetest(double I); 
 	double getmembrane();
 	int getnumspike();
+	void setmembrane( double V);
+	void sendspike( Neuron& b,double spikevalue);
+	void addinbuffer(double spikevalue);
 };
 	
 	
