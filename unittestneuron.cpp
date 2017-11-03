@@ -70,7 +70,7 @@ TEST (NeuronTest, SpikeTimes)
 	// also check that the value  og te otential membrane go back to 0.0 after a spike
 	for(int i(0); i<924;++i)
 	{
-	  neuron3.update(I);
+	  neuron3.updatetest(I);
     }
     EXPECT_EQ(0,neuron3.getnumspike());
     neuron3.updatetest(I);
@@ -79,7 +79,7 @@ TEST (NeuronTest, SpikeTimes)
     //waiting for the second spike
     for(int i(0); i<943; ++i)
     {
-		neuron3.update(I);
+		neuron3.updatetest(I);
 	}
 	EXPECT_EQ(1,neuron3.getnumspike());
     neuron3.updatetest(I);
@@ -110,8 +110,10 @@ TEST (TwoNeuronTest, NOspike2)
 	// we wait for the first spike and observe the impact on the second neuron
 	for( int i(0); i<925+delay; ++i)
 	{
-		neuron1.updatetest(I);
-		neuron1.sendspike(neuron2,1);
+		if(neuron1.updatetest(I))
+		{
+		neuron1.sendspike(neuron2,1,i);
+	}
 		neuron2.updatetest(0.0);
 	}
 	EXPECT_EQ(0.1,neuron2.getmembrane());
@@ -127,8 +129,10 @@ TEST (TwoNeuronTest,withspike2)
 	// we wait for the second spike and observe the impact on the second neuron --> neuron 2 should spike spiker
 	for( int i(0); i<1870+delay; ++i) // neuron 2 have to receive 2 spike from neuron 1 to pass the threshold , 1868+2 step because sendspike is called after the incrementation of time in update
 	{
-		neuron1.updatetest(I);
-		neuron1.sendspike(neuron2,1);
+		if(neuron1.updatetest(I))
+		{
+		neuron1.sendspike(neuron2,1,i);
+	}
 		neuron2.updatetest(I2);
 	}
 	EXPECT_EQ(1,neuron2.getnumspike());

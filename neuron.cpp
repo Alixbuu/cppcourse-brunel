@@ -2,10 +2,10 @@
 #include "neuron.hpp"
 #include <cmath>
 #include <vector>
-#include <random>
+
 using namespace std;
 
-Neuron::Neuron (double membranepot,int numspike,double local)
+Neuron::Neuron (double membranepot,int numspike,int local)
  :membrane_pot(membranepot),
   numberspike(numspike),
   local_t(local)
@@ -32,7 +32,10 @@ int Neuron::getnumspike()
 }
 
 bool Neuron::update(double I )
-{   bool spike=false;
+{   
+	bool spike=false;
+	double Jbuffer=0.0;
+	
 	if(membrane_pot > V_thr) { 
 		timespike.push_back(local_t);
 		n_refractory=true;
@@ -42,6 +45,11 @@ bool Neuron::update(double I )
 	
 	if (!timespike.empty() and (local_t - trefact) > (timespike.back()-1)) {
 		n_refractory=false;
+	}
+	if(buffer[(local_t)%(buffer.size())]>0)
+	{
+		Jbuffer=buffer[(local_t)%(buffer.size())];
+		buffer[local_t%buffer.size()]=0;
 	}
 	
 	if(n_refractory) {
@@ -53,9 +61,9 @@ bool Neuron::update(double I )
 		static mt19937 gen(rd());
 		static poisson_distribution<> backgroundnoise(lambda);
 		
-		Vtemp=c1*membrane_pot + I*c2 + buffer[(local_t)%(buffer.size())] + backgroundnoise(gen)*J;
+		Vtemp=c1*membrane_pot + I*c2 + Jbuffer + backgroundnoise(gen)*J;
 		membrane_pot=Vtemp;
-		buffer[local_t%buffer.size()]=0;
+		
 	 }
 	++local_t;
 	return spike;
@@ -93,20 +101,23 @@ bool Neuron::updatetest(double I )
 
 
 
-void Neuron::sendspike(Neuron& b,double spikevalue)
+void Neuron::sendspike(Neuron& b,double spikevalue,int time)
 { 																																																																																																																																																																																																																			;
-	b.addinbuffer(spikevalue);
+	b.addinbuffer(spikevalue,time);
 }
 
 
 
 
-void Neuron::addinbuffer(double spikevalue)
+void Neuron::addinbuffer(double spikevalue, int time)
 {
-	buffer[(local_t+delay)%buffer.size()]+=spikevalue; 
+	buffer[(time+delay)%buffer.size()]+=spikevalue; 
 }	 
 		
-	
+int Neuron::getspiketime()
+{
+	return timespike.back();
+}
 		
 			
 			

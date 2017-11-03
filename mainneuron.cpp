@@ -6,13 +6,14 @@ using namespace std;
 
  int main()
 { 
-	cout << "1" << endl;
+	
  Network network;
- cout << "2" << endl;
+ cout << "network created" << endl;
  network.CreateConnexions();
- cout << "3" << endl;
+ cout << "connexions between neurons made" << endl;
+ cout<< " start of simulation"<< endl;
  network.startsimulation();
- cout << "4" << endl;
+ cout << "end of simulation" << endl;
  return 0;
  }
  
