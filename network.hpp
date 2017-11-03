@@ -17,17 +17,17 @@ using namespace std;
 
 class Network {
 	
-	/******************************************//**
+	/********************************************
 	 * 		Private Arguments of the Class
 	 * 
-	 ********************************************//
+	 ********************************************/
 	
 	private:
 	
 	vector <Neuron> TabNeuron;//! table of all my neurons 
 	vector <vector<int>> Connexions;//! a table of vector of connexions of neurons
 	
-	/****************************************************//**
+	/******************************************************
 	 * 		Public Arguments and Methods of the class
 	 * 
 	 *******************************************************/
@@ -46,7 +46,7 @@ class Network {
 	const int Nb_excitatory; //! number of neurons excitatory
 	const int Nb_Inhibitory; //! number of neurons inhibitory
 	
-	/*********************************************************//**
+	/***********************************************************
 	 * Createconnexions and Startsimulation methods
 	 * 
 	 ************************************************************/

@@ -9,36 +9,38 @@
 using namespace std;
 
 typedef vector<double> time_vector;
-/***********************************************************//**
+/*************************************************************
  * 			Definition of the class Neuron
  * 
  **************************************************************/
 class Neuron {
-/**********************************************************//**
+/************************************************************
  * 			Private arguments of the  class
  * 
  *************************************************************/
 	
 	private:
 	
-	 double membrane_pot; //! membrane potential of the neuron 
-	 time_vector timespike; //! vector of the spike times of the neuron 
-     int numberspike; //! number of spike of the neuron 
-     bool n_refractory = false;//!state of the refraction of the neuron 
-     int local_t;//! the local clock of the neuron 
-     vector<int> buffer; //! the ring buffer of the neuron delaying the spike received 
+	 double membrane_pot;//!< membrane potential of the neuron
+	 time_vector timespike; //!< vector of the spike times of the neuron 
+     int numberspike;//!< number of spike of the neuron /
+     bool n_refractory = false;//!<state of the refraction of the neuron 
+     int local_t;///< the local clock of the neuron 
+     vector<int> buffer;//!< the ring buffer of the neuron 
+     
 
-/***********************************************************//**
+/*************************************************************
  * 			Public arguments and methods of the class
  * 
  **************************************************************/
 	  
 	public :
+	
 	/** 
-	 * Constructor of the Neuron
+	 *Constructor of the Neuron
 	 */
 	Neuron(double membranepotential=0.0, int numspike= 0,int local=0.0);
-/**************************************************************//**
+/****************************************************************
  * 						GETTERS
  * 
  ****************************************************************/
@@ -57,7 +59,7 @@ class Neuron {
 	 */
 	int getspiketime();
 	
-	/**********************************************************//**
+	/************************************************************
 	 * 					SETTERS
 	 * 
 	 *************************************************************/
@@ -67,7 +69,7 @@ class Neuron {
 	 */
 	void setmembrane( double V);
 	
-	/**********************************************************//**
+	/************************************************************
 	 * 			Methods Update and Updatetest
 	 *
 	 *************************************************************/
@@ -85,7 +87,7 @@ class Neuron {
 	 */
 	bool updatetest(double I); 
 	
-	/*********************************************************//**
+	/***********************************************************
 	 * 		   Methods Sendspike and Addinbuffer
 	 * 
 	 ************************************************************/
