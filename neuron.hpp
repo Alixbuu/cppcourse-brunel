@@ -79,7 +79,7 @@ class Neuron {
 	 * @param an external current I
 	 * @return a [bool] to know if spike or not
 	 */
-	bool update(double I);
+	bool update(double I, int poisson);
 	/**
 	 * @brief same update but without the poisson distribution for the googletest
 	 * @param an external current
@@ -93,7 +93,6 @@ class Neuron {
 	 ************************************************************/
 	
 	/**
-	 *sendspike
 	 * @brief when the neuron spike he sends a spikevalue(J or Ji) to its connexions
 	 * @param Neuron receiving the spike
 	 * @param [double] spikevalue
@@ -102,7 +101,6 @@ class Neuron {
 	void sendspike( Neuron& b,double spikevalue, int time);
 	
 	/**
-	 * addinbuffer method
 	 * @brief the neuron receving the spike add in the spike value in his buffer with a delay
 	 * @param [double] spikevalue
 	 * @param [int] time of the neuron spiking

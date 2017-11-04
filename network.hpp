@@ -51,7 +51,7 @@ class Network {
 	 * 
 	 ************************************************************/
 	/**
-	 * Createconnexiosn
+	 * Createconnexion
 	 * @brief create connexions between neurons randomly using an uniform distribution
 	 */
 	void CreateConnexions ();

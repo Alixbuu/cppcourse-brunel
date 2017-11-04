@@ -31,7 +31,7 @@ int Neuron::getnumspike()
 	return numberspike;
 }
 
-bool Neuron::update(double I )
+bool Neuron::update(double I, int poisson )
 {   
 	bool spike=false;
 	double Jbuffer=0.0;
@@ -56,12 +56,7 @@ bool Neuron::update(double I )
 		membrane_pot=V_reset;
 	} else {
 		double Vtemp;
-		
-		static random_device rd;
-		static mt19937 gen(rd());
-		static poisson_distribution<> backgroundnoise(lambda);
-		
-		Vtemp=c1*membrane_pot + I*c2 + Jbuffer + backgroundnoise(gen)*J;
+		Vtemp=c1*membrane_pot + I*c2 + Jbuffer + poisson*J;
 		membrane_pot=Vtemp;
 		
 	 }

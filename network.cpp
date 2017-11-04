@@ -37,9 +37,9 @@ void Network::CreateConnexions()
 		{
 			static random_device rd;
 			static mt19937 gen(rd());
-			static uniform_int_distribution<> connexion_with(Nb_excitatory,Nbneuron);
+			static uniform_int_distribution<> connexions_with(Nb_excitatory,Nbneuron);
 			
-			Connexions[connexion_with(gen)].push_back(i);
+			Connexions[connexions_with(gen)].push_back(i);
 		
 		}
 	}
@@ -50,15 +50,19 @@ void Network::startsimulation()
 	int t_global(0);
 	ofstream Membpotfile; // output files
 	Membpotfile.open("./Membpotfile"); //open with a name
+	
+	static random_device rd;
+	static mt19937 gen(rd());
+	static poisson_distribution<> backgroundnoise(lambda);
  
 	while(t_global<t_stopsimu) {
 		
 		for( size_t i(0); i<TabNeuron.size(); ++i)
 		{
-			if(TabNeuron[i].update(Iext))
-			{
+			if(TabNeuron[i].update(Iext, backgroundnoise(gen)))
+			{  if(t_global>3000){
 				Membpotfile<<t_global<<'\t'<<i+1<<'\n';
-				
+			}
 				for( size_t j(0); j<Connexions[i].size(); ++j)
 				{
 					int connect=Connexions[i][j];

@@ -21,17 +21,20 @@ using namespace std;
   double const c2 = R*(1-exp(-h/t_));//! constante 2 for the euqation of membrane potential
   int const delay= 15;//! delay for the buffer
   double const J=0.1;//! amplitude for excitatory neurons
-  double const Ji=-0.5;//! amplitude for inhibitory neurons
+  double const Ji=-0.6;//! amplitude for inhibitory neurons
   double const Iext=0.0;//! external current
   double const Teta = 20;//! Teta for poisson law
   double const eta = 2;//! Eta for poisson law
   
   
-  int const t_stopsimu =1000;//! time of simulation
-   // poisson law
+  int const t_stopsimu =5000;//! time of simulation
+/***********************************************
+    * Poisson Law
+    * 
+*************************************************/
   double const Nuthr = (Teta/(0.1*0.8*Nbneuron*J*t_));
   double const Nuext =  (eta*0.1*0.8*Nbneuron*Nuthr);
-  double const lambda = (Nuext*h);
+  double const lambda = (4/*Nuext*h*/);
   
   
  #endif
