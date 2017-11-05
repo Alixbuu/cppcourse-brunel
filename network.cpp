@@ -14,6 +14,7 @@
 	}
 }
 
+
 void Network::CreateConnexions()
 {
 	for( int i(0); i<Nbneuron; ++i)
@@ -46,12 +47,14 @@ void Network::CreateConnexions()
 		}
 	}
 }
+
+
 		
 void Network::startsimulation()
 {
 	int t_global(0);
-	ofstream Membpotfile; // output files
-	Membpotfile.open("./Membpotfile"); //open with a name
+	ofstream spikeC; // output files
+	spikeC.open("./spikeC"); //open with a name
 	
 	static random_device rd;
 	static mt19937 gen(rd());
@@ -62,9 +65,10 @@ void Network::startsimulation()
 		for( size_t i(0); i<TabNeuron.size(); ++i)
 		{
 			if(TabNeuron[i].update(Iext, backgroundnoise(gen)))
-			{  if(t_global>3000){
-				Membpotfile<<t_global<<'\t'<<i+1<<'\n';
-			}
+			{  if(t_global>3000)
+				{
+				spikeC<<t_global<<'\t'<<i+1<<'\n';
+			    }
 				for( size_t j(0); j<Connexions[i].size(); ++j)
 				{
 					int connect=Connexions[i][j];
@@ -80,6 +84,6 @@ void Network::startsimulation()
 		}
 		++t_global;
 	}
-	 Membpotfile.close();
+	 spikeC.close();
 }	
 			
