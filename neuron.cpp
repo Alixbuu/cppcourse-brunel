@@ -10,31 +10,31 @@ Neuron::Neuron (double membranepot,int numspike,int local)
   numberspike(numspike),
   local_t(local)
 {
-	buffer.resize(delay +1);
+	buffer.resize(delay +1); //resize my buffer at the right size :16
 }
 
 
 
-double Neuron::getmembrane()
+double Neuron::getmembrane() //return the membrane potential
 { 
 	return membrane_pot;
 }
 
-void Neuron::setmembrane( double V)
+void Neuron::setmembrane( double V) // set the membrane potential
  { 
 	 membrane_pot=V;
  }
 	 
 
-int Neuron::getnumspike()
+int Neuron::getnumspike() // return the number of the spike of the neuron
 { 
 	return numberspike;
 }
 
 bool Neuron::update(double I, int poisson )
 {   
-	bool spike=false;
-	double Jbuffer=0.0;
+	bool spike=false;    // will be return a the end
+	double Jbuffer=0.0; // for the buffer value
 	
 	if(membrane_pot > V_thr) { 
 		timespike.push_back(local_t);

@@ -26,7 +26,7 @@ class Neuron {
      int numberspike;//!< number of spike of the neuron /
      bool n_refractory = false;//!<state of the refraction of the neuron 
      int local_t;///< the local clock of the neuron 
-     vector<int> buffer;//!< the ring buffer of the neuron 
+     vector<double> buffer;//!< the ring buffer of the neuron 
      
 
 /*************************************************************
@@ -77,6 +77,7 @@ class Neuron {
 	/**
 	 *@brief update the membrane potential and the state of neuron(refractory or not) on one timestep.
 	 * @param an external current I
+	 * @param a poisson distribution
 	 * @return a [bool] to know if spike or not
 	 */
 	bool update(double I, int poisson);
