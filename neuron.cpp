@@ -31,7 +31,7 @@ int Neuron::getnumspike() // return the number of the spike of the neuron
 	return numberspike;
 }
 
-bool Neuron::update(double I, int poisson )
+bool Neuron::update(double I, double poisson )
 {   
 	bool spike=false;    // will be return a the end
 	double Jbuffer=0.0; // for the buffer value
@@ -46,7 +46,7 @@ bool Neuron::update(double I, int poisson )
 	if (!timespike.empty() and (local_t - trefact) > (timespike.back()-1)) {
 		n_refractory=false;
 	}
-	if(buffer[(local_t)%(buffer.size())]>0)
+	if((buffer[(local_t)%(buffer.size())]>0) or (buffer[(local_t)%(buffer.size())]<0))
 	{
 		Jbuffer=buffer[(local_t)%(buffer.size())];
 		buffer[local_t%buffer.size()]=0;

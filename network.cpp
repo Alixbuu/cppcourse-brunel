@@ -22,22 +22,24 @@ void Network::CreateConnexions()
 		Connexions.push_back(page);
 	}
 	
+	static random_device rd;
+			static mt19937 gen(rd());
+			static uniform_int_distribution<> connexion_with(0,Nb_excitatory-1);
+			static uniform_int_distribution<> connexions_with(Nb_excitatory,Nbneuron);
+			
 	for(int i(0); i<Nbneuron;++i)
 	{
 		for( int j(0); j<0.1*Nb_excitatory; ++j)
 		{
-			static random_device rd;
-			static mt19937 gen(rd());
-			static uniform_int_distribution<> connexion_with(0,Nb_excitatory-1);
+			
 			
 			Connexions[connexion_with(gen)].push_back(i);
 		}
 		
 		for(int n(0); n< 0.1*Nb_Inhibitory; ++n)
 		{
-			static random_device rd;
-			static mt19937 gen(rd());
-			static uniform_int_distribution<> connexions_with(Nb_excitatory,Nbneuron);
+		
+			
 			
 			Connexions[connexions_with(gen)].push_back(i);
 		
