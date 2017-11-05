@@ -24,8 +24,10 @@ class Network {
 	
 	private:
 	
-	vector <Neuron> TabNeuron;//! table of all my neurons 
-	vector <vector<int>> Connexions;//! a table of vector of connexions of neurons
+	//! table of all my neurons 
+	vector <Neuron> TabNeuron;
+	//! a table of vector of connexions of neurons
+	vector <vector<int>> Connexions;
 	
 	/******************************************************
 	 * 		Public Arguments and Methods of the class
@@ -34,6 +36,8 @@ class Network {
 	public:
 	/**
 	 * Constructor of Network
+	 * @brief initialize th number of neuron and create them.
+	 * initialize the number of excitatory neurons and inhibitory neurons
 	 */
 	Network ();
 	
@@ -52,15 +56,17 @@ class Network {
 	 ************************************************************/
 	/**
 	 * Createconnexion
-	 * @brief create connexions between neurons randomly using an uniform distribution
+	 * @brief create connexions between neurons randomly using an uniform distribution.
+	 * neuron connect with 0.1*Nb_excitatory.
+	 * Neuron connect with 0.1*Nb_inhibitory
 	 */
 	void CreateConnexions ();
 	
 	/**
 	 * Startsimulation
-	 *@brief run the simulation for a certain number of steps
+	 *@brief run the simulation for a certain number of steps.
 	 * update all the table of neurons for a number of steps
-	 * write in a file when a neuron spike and the time of the spike
+	 * write in a file when a neuron spike and the time of the spike for an interval of time 
 	 */
 	void startsimulation();
 	

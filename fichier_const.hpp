@@ -33,8 +33,8 @@ using namespace std;
     * 
 *************************************************/
   double const Nuthr = (Teta/(0.1*0.8*Nbneuron*J*t_));
-  double const Nuext =(eta*0.8*Nbneuron*Nuthr);
-  double const lambda = 2;
+  double const Nuext =(eta*0.1*0.8*Nbneuron*Nuthr);
+  double const lambda = Nuext*h;
   
   
  #endif
