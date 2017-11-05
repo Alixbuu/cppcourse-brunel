@@ -80,7 +80,7 @@ class Neuron {
 	 * @param a poisson distribution
 	 * @return a [bool] to know if spike or not
 	 */
-	bool update(double I, int poisson);
+	bool update(double I, double poisson);
 	/**
 	 * @brief same update but without the poisson distribution for the googletest
 	 * @param an external current
