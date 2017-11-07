@@ -12,7 +12,7 @@ Network: represent a network of neurons, initialized witha vector of neuron. con
 The main: create network with a number of neurons, create the connexions between them and run the simulation for a certain time.<br>
 To excecute the program:.<br>
 ( be in the right subdirectory ).<br>
-cmake ...<br>
+cmake ..<br>
 make.<br>
 
 ./Neuron (will run the simulation an generate the file for plot C).<br>
