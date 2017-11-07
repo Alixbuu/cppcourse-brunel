@@ -18,9 +18,11 @@ make<br>
 
 or ./Neuron_unittest (will execute the google test)<br>
 
-make
-make doc (generate a html for doxygen)
+make <br>
+make doc (generate a html for doxygen)<br>
 
 
 github: .<br>
-I did multiple branches because it seemed like a good idea but i didnt merge it with the master because it would create conflict So my number of commits are not only in the master branch my final project can be find on the master branch or the projetfinalwith plot branch
+I did multiple branches because it seemed like a good idea but i didn't merge it with the master because it would create conflicts<br>
+So my number of commits are not only in the master branch <br>
+my final project can be find on the master branch or the projetfinalwithplot branch <br>
