@@ -20,6 +20,8 @@ make.<br>
 or.<br> 
 ./Neuron_unittest   (will execute the google test).<br>
 
+make
+make doc (generate a html for doxygen)
 
 
 github:
